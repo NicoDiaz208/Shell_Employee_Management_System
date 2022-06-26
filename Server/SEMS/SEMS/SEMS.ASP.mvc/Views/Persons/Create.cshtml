@@ -8,6 +8,14 @@
 
 <h4>PersonModel</h4>
 <hr />
+
+@if (string.IsNullOrEmpty(ViewBag.Error) == false)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">

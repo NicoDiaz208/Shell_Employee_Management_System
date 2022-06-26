@@ -31,8 +31,8 @@ namespace SEMS.Logic.Entities
         public int Place { get; set; }
         [Required, DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
-        [Required, MaxLength(256)]
-        public String Note { get; set; } = String.Empty;
+        [MaxLength(256)]
+        public String? Note { get; set; }
 
         [Required, DataType(DataType.Date)]
         public DateTime ApplicationDate { get; set; }
