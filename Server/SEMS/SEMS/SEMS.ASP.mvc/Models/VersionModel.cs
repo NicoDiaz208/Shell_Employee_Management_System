@@ -1,6 +1,14 @@
-﻿namespace SEMS.ASP.mvc.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SEMS.ASP.mvc.Models
 {
-    public class VersionModel
+
+    public abstract partial class VersionModel : IdentityModel
     {
+        /// <summary>
+        /// Row version of the entity.
+        /// </summary>
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = Array.Empty<byte>();
     }
 }

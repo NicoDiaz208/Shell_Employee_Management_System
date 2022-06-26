@@ -1,7 +1,11 @@
+using SEMS.Logic.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<PersonController>();
 
 var app = builder.Build();
 

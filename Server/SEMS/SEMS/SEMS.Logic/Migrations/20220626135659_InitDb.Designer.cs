@@ -12,7 +12,7 @@ using SEMS.Logic.DataContext;
 namespace SEMS.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20220626132226_InitDb")]
+    [Migration("20220626135659_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,18 @@ namespace SEMS.Logic.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
+                    b.Property<DateTime>("ApplicationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("BeginDate")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndDate")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
@@ -57,6 +68,16 @@ namespace SEMS.Logic.Migrations
 
                     b.Property<int>("Place")
                         .HasColumnType("int");
+
+                    b.Property<string>("ReasonForTermination")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<string>("Referal")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -78,57 +99,6 @@ namespace SEMS.Logic.Migrations
                         .IsUnique();
 
                     b.ToTable("Persons", "App");
-                });
-
-            modelBuilder.Entity("SEMS.Logic.Entities.Applicant", b =>
-                {
-                    b.HasBaseType("SEMS.Logic.Entities.Person");
-
-                    b.Property<DateTime>("ApplicationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Referal")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
-
-                    b.ToTable("Applicants", "App");
-                });
-
-            modelBuilder.Entity("SEMS.Logic.Entities.Employee", b =>
-                {
-                    b.HasBaseType("SEMS.Logic.Entities.Applicant");
-
-                    b.Property<DateTime>("BeginDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ReasonForTermination")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.ToTable("Employees", "App");
-                });
-
-            modelBuilder.Entity("SEMS.Logic.Entities.Applicant", b =>
-                {
-                    b.HasOne("SEMS.Logic.Entities.Person", null)
-                        .WithOne()
-                        .HasForeignKey("SEMS.Logic.Entities.Applicant", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SEMS.Logic.Entities.Employee", b =>
-                {
-                    b.HasOne("SEMS.Logic.Entities.Applicant", null)
-                        .WithOne()
-                        .HasForeignKey("SEMS.Logic.Entities.Employee", "Id")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

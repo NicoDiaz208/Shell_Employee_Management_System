@@ -11,7 +11,7 @@ namespace SEMS.Logic.Entities
 {
     [Table("Persons", Schema = "App")]
     [Index(nameof(SSN), IsUnique = true)]
-    public abstract class Person: VersionEntity
+    public class Person: VersionEntity
     {
         [Required, MaxLength(10), MinLength(10)]
         public String SSN { get; set; } = String.Empty;
@@ -31,5 +31,18 @@ namespace SEMS.Logic.Entities
         public int Place { get; set; }
         [Required, MaxLength(256)]
         public String Note { get; set; } = String.Empty;
+
+
+        [Required]
+        public DateTime ApplicationDate { get; set; }
+        [Required, MaxLength(64)]
+        public String Referal { get; set; } = String.Empty;
+
+        [Required]
+        public DateTime? BeginDate { get; set; }
+        [Required]
+        public DateTime? EndDate { get; set; }
+        [Required, MaxLength(128)]
+        public String? ReasonForTermination { get; set; } = String.Empty;
     }
 }

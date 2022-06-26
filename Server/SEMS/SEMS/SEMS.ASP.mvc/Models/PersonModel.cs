@@ -22,5 +22,17 @@ namespace SEMS.ASP.mvc.Models
         public int Place { get; set; }
         [Required, MaxLength(256)]
         public String Note { get; set; } = String.Empty;
+
+        [Required]
+        public DateTime ApplicationDate { get; set; }
+        [Required, MaxLength(64)]
+        public String Referal { get; set; } = String.Empty;
+
+        [Required]
+        public DateTime? BeginDate { get; set; }
+        [Required]
+        public DateTime? EndDate { get; set; }
+        [Required, MaxLength(128)]
+        public String? ReasonForTermination { get; set; } = String.Empty;
     }
 }
