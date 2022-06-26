@@ -1,17 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace SEMS.Logic.Entities
+namespace SEMS.ASP.mvc.Models
 {
-    [Table("Persons", Schema = "App")]
-    [Index(nameof(SSN), IsUnique = true)]
-    public abstract class Person: VersionEntity
+    public class PersonModel:VersionModel
     {
         [Required, MaxLength(10), MinLength(10)]
         public String SSN { get; set; } = String.Empty;

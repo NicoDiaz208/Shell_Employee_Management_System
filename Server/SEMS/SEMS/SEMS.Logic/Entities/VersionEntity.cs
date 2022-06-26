@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace SEMS.Logic.Entities
 {
-    public abstract partial class IdentityEntity : IIdentifyable
+    public abstract partial class VersionEntity : IdentityEntity, IVersionable
     {
         /// <summary>
-        /// ID of the entity (primary key)
+        /// Row version of the entity.
         /// </summary>
-        [Key]
-        public int Id { get; internal set; }
+        [Timestamp]
+        public byte[]? RowVersion { get; internal set; }
     }
 }

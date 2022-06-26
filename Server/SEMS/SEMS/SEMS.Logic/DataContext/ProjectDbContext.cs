@@ -10,7 +10,7 @@ namespace SEMS.Logic.DataContext
 {
     internal partial class ProjectDbContext : DbContext
     {
-        private static readonly string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Database=QTDrugStoreDb;Integrated Security=True";
+        private static readonly string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Database=SEMSDB;Integrated Security=True";
         static ProjectDbContext()
         {
             BeforeClassInitialize();
