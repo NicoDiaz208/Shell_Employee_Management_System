@@ -39,14 +39,12 @@ namespace SEMS.Logic.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("BeginDate")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("EndDate")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
@@ -68,7 +66,6 @@ namespace SEMS.Logic.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ReasonForTermination")
-                        .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
@@ -86,6 +83,11 @@ namespace SEMS.Logic.Migrations
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Sex")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("TelNr")
                         .IsRequired()
