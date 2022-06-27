@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   public username = '';
   public password = '';
 
-  title = "Hello, sir";
+  title = "Welcome";
 
   constructor() { }
 
