@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherForecastService } from 'src/services';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private weatherService: WeatherForecastService) { }
 
   ngOnInit() {}
 
+  async call(){
+    let i = await this.weatherService.getWeatherForecast().toPromise();
+    i.forEach(element => {
+      console.log(element.date + '    ' + element.summary + '   ' + element.temperatureC);
+    });
+  }
 }

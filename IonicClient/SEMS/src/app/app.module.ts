@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { HomePageRoutingModule } from './home/home-routing.module';
 import { MainDashboardComponent } from './home/pages/main-dashboard/main-dashboard.component';
 import { HomePage } from './home/home.page';
+import { ApiModule, BASE_PATH, PersonService, UsersService, WeatherForecastService } from 'src/services';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,8 +22,22 @@ import { HomePage } from './home/home.page';
     HomePage,
     MainDashboardComponent
     ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports:
+  [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ApiModule
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    PersonService,
+    UsersService,
+    WeatherForecastService,
+    {provide: BASE_PATH, useValue: environment.apiBase}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
