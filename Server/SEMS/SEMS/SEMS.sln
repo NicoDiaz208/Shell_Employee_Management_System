@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEMS.Common", "SEMS.Common\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEMS.ASP.mvc", "SEMS.ASP.mvc\SEMS.ASP.mvc.csproj", "{AB91632F-0BC4-4145-993F-BC5BB48BD3DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEMS.WebApi", "SEMS.WebApi\SEMS.WebApi.csproj", "{B2D93B2B-A852-4B80-AEE5-5A28D561D08F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{AB91632F-0BC4-4145-993F-BC5BB48BD3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB91632F-0BC4-4145-993F-BC5BB48BD3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB91632F-0BC4-4145-993F-BC5BB48BD3DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2D93B2B-A852-4B80-AEE5-5A28D561D08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D93B2B-A852-4B80-AEE5-5A28D561D08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D93B2B-A852-4B80-AEE5-5A28D561D08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D93B2B-A852-4B80-AEE5-5A28D561D08F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

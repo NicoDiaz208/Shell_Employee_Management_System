@@ -27,7 +27,7 @@ namespace SEMS.Logic.Migrations
                     Address = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Place = table.Column<int>(type: "int", nullable: false),
                     Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ApplicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Referal = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     BeginDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -40,11 +40,34 @@ namespace SEMS.Logic.Migrations
                     table.PrimaryKey("PK_Persons", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserClient",
+                schema: "App",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Username = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserClient", x => x.Id);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Persons_SSN",
                 schema: "App",
                 table: "Persons",
                 column: "SSN",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserClient_Username",
+                schema: "App",
+                table: "UserClient",
+                column: "Username",
                 unique: true);
         }
 
@@ -52,6 +75,10 @@ namespace SEMS.Logic.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Persons",
+                schema: "App");
+
+            migrationBuilder.DropTable(
+                name: "UserClient",
                 schema: "App");
         }
     }

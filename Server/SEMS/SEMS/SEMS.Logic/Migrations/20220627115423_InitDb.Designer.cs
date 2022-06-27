@@ -12,7 +12,7 @@ using SEMS.Logic.DataContext;
 namespace SEMS.Logic.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20220626150912_Init-Db")]
+    [Migration("20220627115423_InitDb")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,37 @@ namespace SEMS.Logic.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("SEMS.Logic.Entities.JWT.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
+
+                    b.ToTable("UserClient", "App");
+                });
 
             modelBuilder.Entity("SEMS.Logic.Entities.Person", b =>
                 {
@@ -60,7 +91,6 @@ namespace SEMS.Logic.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 

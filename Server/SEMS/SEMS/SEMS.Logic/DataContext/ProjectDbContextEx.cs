@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SEMS.Logic.Entities;
+using SEMS.Logic.Entities.JWT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,28 +11,22 @@ namespace SEMS.Logic.DataContext
 {
     partial class ProjectDbContext
     {
-    //    public DbSet<Employee> EmployeeSet { get; set; }
         public DbSet<Person> PersonSet { get; set; }
-        //public DbSet<Applicant> ApplicantSet { get; set; }
+        public DbSet<User> UserSet { get; set; }
 
 
         partial void GetDbSet<E>(ref DbSet<E>? dbSet, ref bool handled) where E : IdentityEntity
         {
-            //if(typeof(E) == typeof(Employee))
-            //{
-            //    handled = true;
-            //    dbSet = EmployeeSet as DbSet<E>;
-            //}
             if(typeof(E) == typeof(Person))
             {
                 handled = true;
                 dbSet = PersonSet as DbSet<E>;
             }
-            //if(typeof(E) == typeof(Applicant))
-            //{
-            //    handled = true;
-            //    dbSet = ApplicantSet as DbSet<E>;
-            //}
+            if (typeof(E) == typeof(User))
+            {
+                handled = true;
+                dbSet = UserSet as DbSet<E>;
+            }
         }
     }
 }
