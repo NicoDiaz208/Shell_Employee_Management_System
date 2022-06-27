@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">SEMS</ion-title>
+    <ion-button slot="end" routerLink="./home" [hidden]="hideLoginButton" size="large">Login</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+  <div class="mid">
+    <div>
+      <div class="typewriter">
+        <h1>{{title}}</h1>
+      </div>
+    </div>
+  </div>
+
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>
+        <ion-input minlength="8" maxlength="32" (ionChange)="checkFilled()" [(ngModel)]="username" placeholder="Username"></ion-input>
+        <ion-input minlength="8" maxlength="32" (ionChange)="checkFilled()" [(ngModel)]="password" type="password" placeholder="Password"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
