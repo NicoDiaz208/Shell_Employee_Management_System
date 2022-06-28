@@ -6,10 +6,20 @@
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
+    <ion-button slot="end">Neuer Bewerber</ion-button>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="call()"></ion-button>
+  <ion-list>
+    <ion-item button (click)="presentModal(item)" *ngFor="let item of persons">
+      <ion-col>{{item.firstName}}</ion-col>
+      <ion-col>{{item.lastName}}</ion-col>
+      <ion-col>{{item.ssn}}</ion-col>
+      <ion-col>{{item.birthday | date:'dd.MM.yyyy'}}</ion-col>
+      <ion-col>{{item.applicationDate | date:'dd.MM.yyyy'}}</ion-col>
+      <ion-col>{{item.referal}}</ion-col>
+    </ion-item>
+  </ion-list>
 </ion-content>

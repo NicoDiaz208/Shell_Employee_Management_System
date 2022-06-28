@@ -1,4 +1,9 @@
+import { HttpBackend, HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { BASE_PATH, UsersService } from 'src/services';
+import { JWTToken } from 'src/services/JWT/JWTToken';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +20,16 @@ export class LoginComponent implements OnInit {
 
   title = "Welcome";
 
-  constructor() { }
+  private httpClient: HttpClient;
+
+  constructor(
+    private userService: UsersService,
+    private router: Router,
+    private handler: HttpBackend
+    )
+     {
+      this.httpClient = new HttpClient(handler);
+     }
 
   ngOnInit() {}
 
@@ -25,6 +39,14 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.hideLoginButton = true;
+  }
+
+  async login(){
+    let token: JWTToken = await this.userService.apiUsersAuthenticatePost(this.username, this.password).toPromise();
+    if(token){
+      window.localStorage.setItem('Token', token.token);
+      this.router.navigate(['home/main-dashboard']);
+    }
   }
 
 }

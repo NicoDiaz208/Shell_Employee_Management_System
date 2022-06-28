@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherForecastService } from 'src/services';
+import { ModalController } from '@ionic/angular';
+import { PersonModel, PersonService, UsersService, WeatherForecastService } from 'src/services';
+import { ModalDetailComponent } from './modal-detail/modal-detail.component';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -8,14 +10,27 @@ import { WeatherForecastService } from 'src/services';
 })
 export class MainDashboardComponent implements OnInit {
 
-  constructor(private weatherService: WeatherForecastService) { }
+  public persons: PersonModel[] = [];
 
-  ngOnInit() {}
+  constructor(private weatherService: WeatherForecastService,
+    private personService: PersonService,
+    private modalController: ModalController) { }
 
-  async call(){
-    let i = await this.weatherService.getWeatherForecast().toPromise();
-    i.forEach(element => {
-      console.log(element.date + '    ' + element.summary + '   ' + element.temperatureC);
-    });
+  async ngOnInit() {
+    this.persons = await this.personService.apiPersonGet().toPromise();
   }
+
+  async presentModal(person: PersonModel) {
+    const modal = await this.modalController.create({
+      component: ModalDetailComponent,
+      cssClass: 'small-modal',
+      componentProps: {
+        person
+      }
+    });
+
+    return await modal.present();
+  }
+
+
 }

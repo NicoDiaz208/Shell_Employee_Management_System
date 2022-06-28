@@ -13,14 +13,17 @@ import { MainDashboardComponent } from './home/pages/main-dashboard/main-dashboa
 import { HomePage } from './home/home.page';
 import { ApiModule, BASE_PATH, PersonService, UsersService, WeatherForecastService } from 'src/services';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/services/JWT/token-interceptor.service';
+import { ModalDetailComponent } from 'src/app/home/pages/main-dashboard/modal-detail/modal-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomePage,
-    MainDashboardComponent
+    MainDashboardComponent,
+    ModalDetailComponent
     ],
   imports:
   [
@@ -33,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     PersonService,
     UsersService,
     WeatherForecastService,

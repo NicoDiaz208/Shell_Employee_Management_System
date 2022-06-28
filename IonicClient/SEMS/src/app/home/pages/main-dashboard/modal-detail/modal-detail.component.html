@@ -1,0 +1,144 @@
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label position="floating" color="primary">Vorname</ion-label>
+        <ion-input [value]="person.firstName"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label position="floating" color="primary">Nachname</ion-label>
+        <ion-input [value]="person.lastName"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label position="floating" color="primary">Adresse</ion-label>
+        <ion-input [value]="person.address"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label position="floating" color="primary">Ort</ion-label>
+        <ion-input [value]="person.place"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-select placeholder="Geschlecht">
+          <ion-select-option value="M">Mann</ion-select-option>
+          <ion-select-option value="F">Frau</ion-select-option>
+          <ion-select-option value="D">Divers</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-item id="open-modal">
+          <ion-icon icon="calendar-outline" color="primary"></ion-icon>
+          <ion-label>Geburtsdatum</ion-label>
+          <ion-text>{{person.birthday | date:'dd.MM.yyyy'}}</ion-text>
+        </ion-item>
+
+        <ion-modal trigger="open-modal">
+          <ng-template>
+            <ion-content>
+              <ion-datetime
+              presentation="date"
+              #datetime
+              [value]="person.birthday" size="cover"
+              (ionChange)="dateChanged(datetime.value)"
+              showDefaultButtons="true"
+              (ionCancel)="showPicker = false;"></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label position="floating" color="primary">Tel. Nr.</ion-label>
+        <ion-input [value]="person.telNr"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label position="floating" color="primary">Sozialversicherungsnummer</ion-label>
+        <ion-input [value]="person.ssn"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Notiz</ion-label>
+      <ion-textarea [value]="person.note"></ion-textarea>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-label position="floating" color="primary">Überweisung</ion-label>
+        <ion-input [value]="person.referal"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-item id="open-modal2">
+          <ion-icon icon="calendar-outline" color="primary"></ion-icon>
+          <ion-label>Bewerbungsdatum</ion-label>
+          <ion-text>{{person.applicationDate | date:'dd.MM.yyyy'}}</ion-text>
+        </ion-item>
+
+        <ion-modal trigger="open-modal2">
+          <ng-template>
+            <ion-content>
+              <ion-datetime
+              presentation="date"
+              #datetime
+              [value]="person.applicationDate" size="cover"
+              (ionChange)="dateChanged(datetime.value)"
+              showDefaultButtons="true"
+              (ionCancel)="showPicker = false;"></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item id="open-modal3">
+          <ion-icon icon="calendar-outline" color="primary"></ion-icon>
+          <ion-label>Arbeitsbegin</ion-label>
+          <ion-text>{{person.beginDate | date:'dd.MM.yyyy'}}</ion-text>
+        </ion-item>
+
+        <ion-modal trigger="open-modal3">
+          <ng-template>
+            <ion-content>
+              <ion-datetime
+              presentation="date"
+              #datetime
+              [value]="person.beginDate" size="cover"
+              (ionChange)="dateChanged(datetime.value)"
+              showDefaultButtons="true"
+              (ionCancel)="showPicker = false;"></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+      <ion-col>
+        <ion-item id="open-modal4">
+          <ion-icon icon="calendar-outline" color="primary"></ion-icon>
+          <ion-label>Arbeitsende</ion-label>
+          <ion-text>{{person.endDate | date:'dd.MM.yyyy'}}</ion-text>
+        </ion-item>
+
+        <ion-modal trigger="open-modal4">
+          <ng-template>
+            <ion-content>
+              <ion-datetime
+              presentation="date"
+              #datetime
+              [value]="person.endDate" size="cover"
+              (ionChange)="dateChanged(datetime.value)"
+              showDefaultButtons="true"
+              (ionCancel)="showPicker = false;"></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+    </ion-row>
+    <ion-label position="floating" color="primary">Grund der Kündigung</ion-label>
+    <ion-input [value]="person.reasonForTermination"></ion-input>
+  </ion-grid>
+</ion-content>

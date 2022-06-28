@@ -24,3 +24,27 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.small-modal{
+  &::part(backdrop){
+    backdrop-filter: blur(12px);
+  }
+  &::part(content){
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    border-radius: 10px;
+  }
+}
+
+ion-modal{
+  --background: rgba(44,39,45,0.2);
+
+  &::part(content){
+    backdrop-filter: blur(6px);
+  }
+  ion-content{
+    --background: transparent;
+  }
+
+}
