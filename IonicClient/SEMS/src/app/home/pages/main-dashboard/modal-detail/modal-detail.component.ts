@@ -9,7 +9,8 @@ import { PersonModel } from 'src/services';
 export class ModalDetailComponent implements OnInit {
   @Input() public person: PersonModel;
 
-showPicker = false;
+  showPicker = false;
+  disable = true;
 
   constructor() { }
 
@@ -19,4 +20,10 @@ showPicker = false;
     console.log(value);
   }
 
+  update(){
+    this.disable = this.disable ? false : true;
+  }
+  save(){
+    this.update();
+  }
 }

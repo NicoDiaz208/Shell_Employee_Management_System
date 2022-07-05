@@ -32,5 +32,8 @@ export class MainDashboardComponent implements OnInit {
     return await modal.present();
   }
 
+  segmentChanged($event){
+    console.log('Segment has changed')
+  }
 
 }

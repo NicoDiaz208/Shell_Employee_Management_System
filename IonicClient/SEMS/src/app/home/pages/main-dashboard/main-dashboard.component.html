@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Bewerbungen</ion-title>
+    <ion-title color="primary">Bewerbungen</ion-title>
 
     <!-- Hamburger -->
     <ion-buttons slot="start">
@@ -9,9 +9,30 @@
     <ion-button slot="end">Neuer Bewerber</ion-button>
 
   </ion-toolbar>
+  <ion-toolbar color="secondary">
+    <ion-searchbar slot="start"></ion-searchbar>
+    <ion-segment slot="end" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="all">
+        <ion-label>Alle</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="applicants">
+        <ion-label>Bewerber</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="employees">
+        <ion-label>Angestellt</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <ion-list-header color="tertiary">
+      <ion-col>Vorname</ion-col>
+      <ion-col>Nachname</ion-col>
+      <ion-col>Sozialversicherungsnummer</ion-col>
+      <ion-col>Geburtsdatum</ion-col>
+      <ion-col>Bewerbungsdatum</ion-col>
+      <ion-col>Überweisung</ion-col>
+  </ion-list-header>
   <ion-list>
     <ion-item button (click)="presentModal(item)" *ngFor="let item of persons">
       <ion-col>{{item.firstName}}</ion-col>
